@@ -34,6 +34,14 @@ def existe(v1):
     ficheiro.close()
     return valor
 
+def log(v1, v2):
+    import sqlite3
+    ficheiro = sqlite3.connect('db/Utilizadores.db')
+    db = ficheiro.cursor()
+    db.execute("SELECT * FROM usr WHERE usr = ? and pwd = ? ", (v1,v2,))
+    valor = db.fetchone()
+    ficheiro.close()
+    return valor
 
 @app.route('/newpass', methods=['GET', 'POST'])
 def newpass():
@@ -51,7 +59,7 @@ def newpass():
     return render_template('newpass.html', erro=erro)
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/registo', methods=['GET', 'POST'])
 def registo():
     erro = None
     if request.method == 'POST':
@@ -66,6 +74,21 @@ def registo():
             gravar(v1, v2)
             erro = 'Utilizador  registado com sucesso'
     return render_template('registo.html', erro=erro)
+
+@app.route('/', methods=['GET', 'POST'])
+def login():
+    erro = None
+    if request.method == 'POST':
+        v1 = request.form['usr']
+        v2 = request.form['pwd']
+        if not existe(v1):
+            erro = 'O utilizador não existe.'
+        elif not log(v1,v2):
+            erro = 'A palavra passe incorreta.'
+        else:
+            erro = 'Bem Vindo!'
+    return render_template('login.html', erro=erro)
+
 
 
 if __name__ == '__main__':
