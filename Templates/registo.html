@@ -1,13 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends 'layout.html' %}
+{% block titulo %}
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="static/style.css">
-</head>
 <body>
-<h1>CRIAR NOVO UTILIZADOR</h1>
+{% endblock %}
 
+
+
+{% block conteudo %}
+<h1>CRIAR NOVO UTILIZADOR</h1>
 <form method="post">
     <fieldset>
     <legend>Introduza os seus dados</legend>
@@ -25,4 +27,4 @@
 {% if erro %}<h1>{{ erro }}</h1>{% endif %}
 
 </body>
-</html>
+{% endblock %}
