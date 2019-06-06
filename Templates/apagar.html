@@ -3,14 +3,11 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="static/style.css">
-
 {% endblock %}
 
-
-
 {% block conteudo %}
-<body>
-<h1>CRIAR NOVO UTILIZADOR</h1>
+<h1>ELIMINAR CONTA</h1>
+
 <form method="post">
     <fieldset>
     <legend>Introduza os seus dados</legend>
@@ -18,14 +15,11 @@
     <input type="text" name="usr" required>
     <h2>Introduza a Palavra-Passe</h2>
     <input type="password" name="pwd" required>
-    <h2>Confirme a Palavra-Passe</h2>
-    <input type="password" name="cpwd" required>
     <p><br></p>
-    <input type="submit" value="Submeter">
+    <input type="submit" value="Eliminar">
     </fieldset>
 </form>
 
 {% if erro %}<h1>{{ erro }}</h1>{% endif %}
 
-</body>
 {% endblock %}

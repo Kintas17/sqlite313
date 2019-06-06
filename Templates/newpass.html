@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends 'layout.html' %}
+{% block titulo %}
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="static/style.css">
-</head>
+{% endblock %}
+{% block conteudo %}
 <body>
 <h1>ALTERAR SENHA</h1>
 
@@ -25,4 +25,4 @@
 {% if erro %}<h1>{{ erro }}</h1>{% endif %}
 
 </body>
-</html>
+{% endblock %}
