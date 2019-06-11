@@ -26,12 +26,15 @@ def alterar(v1, v2):
 
 
 def existe(v1):
-    import sqlite3
-    ficheiro = sqlite3.connect('db/Utilizadores.db')
-    db = ficheiro.cursor()
-    db.execute("SELECT * FROM usr WHERE usr = ? ", (v1,))
-    valor = db.fetchone()
-    ficheiro.close()
+    try:
+        import sqlite3
+        ficheiro = sqlite3.connect('db/Utilizadores.db')
+        db = ficheiro.cursor()
+        db.execute("SELECT * FROM usr WHERE usr = ? ", (v1,))
+        valor = db.fetchone()
+        ficheiro.close()
+    except:
+        valor= None
     return valor
 
 def eliminar(v1):
